@@ -18,7 +18,7 @@ class MainController extends Controller
         $request->validate([
             'date_first' => 'required|date|after:today|unique:reservations',
             'date_second' => 'required|date|after_or_equal:date_first|unique:reservations',
-            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:12',
+            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:13',
             'email' => 'required|email',
 
         ], [
