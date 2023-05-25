@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [\App\Http\Controllers\MainController::class, 'index']);
+
+Route::post('/saveReservation', [\App\Http\Controllers\MainController::class, 'saveReservation'])->name(
+    'saveReservation'
+);
+Route::get(
+    '/removeReservation/{id}/{index}',
+    [\App\Http\Controllers\MainController::class, 'removeReservation']
+)->name(
+    'removeReservation'
+);
