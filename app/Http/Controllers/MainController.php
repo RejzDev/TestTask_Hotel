@@ -15,6 +15,7 @@ class MainController extends Controller
 
     public function saveReservation(Request $request)
     {
+        //Валідація форми
         $request->validate([
             'date_first' => 'required|date|after_or_equal:today|unique:reservations',
             'date_second' => 'required|date|after_or_equal:date_first|unique:reservations',
@@ -41,6 +42,8 @@ class MainController extends Controller
         $modelReservation = new Reservation();
         $data = $request->all();
 
+
+        // Перевіряємо чи не пересікаєця  в базі даних дата
         $check = $modelReservation->checkRangeDate($data);
 
 
@@ -61,12 +64,14 @@ class MainController extends Controller
                 ]);
         }
 
+        // Зберігаємо дані
         $modelReservation->saveReservation($data);
 
 
         return redirect('/')->withSuccess('Успешно!');
     }
 
+    //Видаляємо дані
     public function removeReservation(int $id, int $index)
     {
         $modelReservation = new Reservation();

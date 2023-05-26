@@ -12,6 +12,7 @@ class Reservation extends Model
 
     public $timestamps = false;
 
+    //Функція збереження даних
     public function saveReservation(array $data)
     {
         $this->date_first = Carbon::parse($data['date_first']);
@@ -35,6 +36,7 @@ class Reservation extends Model
         return $this->id;
     }
 
+//Функція видалення даних
     public function removeReservation(int $id, int $index)
     {
         $result = $this->destroy($id);
@@ -51,6 +53,7 @@ class Reservation extends Model
         return $result;
     }
 
+    //Функція перевірки перетинання дати
     public function checkRangeDate(array $data)
     {
         $result = $this->where('date_first', '<=', $data['date_first'])->where(
