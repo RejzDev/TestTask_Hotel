@@ -46,7 +46,7 @@
                         @enderror
 
                     </div>
-                    <div class="date-out @error('date_first') error @enderror">
+                    <div class="date-out @error('date_second') error @enderror">
                         <p>Дата виїзду</p>
                         <input type="text" name="date_second" id="datepicker1" class="date-1">
                         @error('date_second')
@@ -54,14 +54,14 @@
                         @enderror
 
                     </div>
-                    <div class="form-number @error('date_first') error @enderror">
+                    <div class="form-number @error('phone') error @enderror">
                         <p>номер телефону</p>
                         <input type="text" name="phone">
                         @error('phone')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="form-email @error('date_first') error @enderror">
+                    <div class="form-email @error('email') error @enderror">
                         <p>e-mail</p>
                         <input type="text" name="email">
                         @error('email')

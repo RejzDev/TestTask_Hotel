@@ -50,4 +50,15 @@ class Reservation extends Model
 
         return $result;
     }
+
+    public function checkRangeDate(array $data)
+    {
+        $result = $this->where('date_first', '<=', $data['date_first'])->where(
+            'date_second',
+            '>=',
+            $data['date_second']
+        )->orWhere('date_first', '<=', $data['date_second'])
+            ->where('date_second', '>=', $data['date_first'])->get();
+        return $result;
+    }
 }
