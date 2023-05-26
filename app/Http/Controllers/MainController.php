@@ -44,7 +44,7 @@ class MainController extends Controller
         $check = $modelReservation->checkRangeDate($data);
 
 
-        if (!empty($check)) {
+        if (isset($check[0])) {
             foreach ($check as $item) {
                 $rang[] = $item['date_first'] . ' -' . ' ' . $item['date_second'];
             }
