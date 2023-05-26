@@ -40,7 +40,11 @@ class Reservation extends Model
         $result = $this->destroy($id);
 
         if ($result) {
-            session()->forget('reservations', $index);
+            $reservations = session('reservations');
+
+            unset($reservations[$index]);
+
+            session(['reservations' => $reservations]);
         }
 
 
